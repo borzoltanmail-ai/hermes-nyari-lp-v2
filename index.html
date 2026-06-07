@@ -53,7 +53,7 @@
 }
 
 *{ margin:0; padding:0; box-sizing:border-box; }
-html{ scroll-behavior:smooth; }
+html{ scroll-behavior:smooth; scroll-padding-top:84px; }
 body{ background:var(--bg); color:var(--ink-soft); font-family:var(--font); font-size:17px; line-height:1.65; -webkit-font-smoothing:antialiased; }
 h1,h2,h3,h4{ font-family:var(--font); color:var(--ink); line-height:1.15; letter-spacing:-.01em; font-weight:700; }
 a{ color:inherit; }
@@ -266,15 +266,20 @@ body.js-anim .rv{ transition:none; }
   .progress{ display:none; }
 }
 /* Scroll-scrub: flakon töltés */
-.scrub{ position:relative; height:300vh; }
-.scrub__sticky{ position:sticky; top:0; height:100vh; min-height:600px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:clamp(14px,2vh,24px); padding:84px var(--gutter) 44px; overflow:hidden;
-  background: radial-gradient(120% 85% at 50% 0%, var(--green-50) 0%, transparent 52%), var(--cream); }
+.scrub{ position:relative; height:280vh; }
+.scrub__sticky{ position:sticky; top:0; height:100vh; min-height:600px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:clamp(8px,1.4vh,16px); padding:56px var(--gutter) 28px; overflow:hidden;
+  background:
+    linear-gradient(180deg, var(--cream) 0%, rgba(250,245,236,0) 14%, rgba(248,250,252,0) 86%, var(--bg) 100%),
+    radial-gradient(80% 60% at 50% 52%, #DEDFD8 0%, #CFD0C9 58%, #C6C7C1 100%); }
 .scrub__head{ text-align:center; max-width:34ch; }
-.scrub__head h2{ font-size:clamp(1.5rem,1.1rem+1.6vw,2.2rem); margin-top:8px; }
-.scrub__stage{ position:relative; }
-.scrub__canvas{ height:min(56vh,520px); width:auto; aspect-ratio:440/1056; display:block; border-radius:24px; box-shadow:0 30px 60px -24px rgba(12,49,78,.32); background:#cfd0cd; }
-.scrub__loader{ position:absolute; inset:0; display:flex; align-items:center; justify-content:center; border-radius:24px; background:#dcdcda; color:var(--muted); font:14px/1.4 var(--font); letter-spacing:.02em; }
-.scrub__cap{ position:relative; width:100%; max-width:36ch; height:3.6em; text-align:center; }
+.scrub__head h2{ font-size:clamp(1.4rem,1.05rem+1.4vw,2rem); margin-top:6px; }
+.scrub__sub{ margin-top:8px; color:var(--ink-soft); font-size:clamp(1rem,.95rem+.3vw,1.15rem); }
+.scrub__stage{ position:relative; display:flex; }
+.scrub__canvas{ height:min(64vh,640px); width:auto; aspect-ratio:300/720; display:block; background:transparent;
+  -webkit-mask-image: radial-gradient(130% 104% at 50% 50%, #000 70%, transparent 100%);
+          mask-image: radial-gradient(130% 104% at 50% 50%, #000 70%, transparent 100%); }
+.scrub__loader{ position:absolute; inset:0; display:flex; align-items:center; justify-content:center; background:transparent; color:var(--ink-soft); font:14px/1.4 var(--font); letter-spacing:.02em; }
+.scrub__cap{ position:relative; width:100%; max-width:36ch; height:3.2em; text-align:center; }
 .scrub__cap > div{ position:absolute; inset:0; display:flex; align-items:center; justify-content:center; color:var(--ink-soft); font-size:1.05rem; transition:opacity .18s linear; padding:0 8px; }
 .scrub__cap strong{ color:var(--navy); }
 .scrub__prog{ width:min(280px,64vw); height:4px; background:var(--line); border-radius:4px; overflow:hidden; }
@@ -404,17 +409,13 @@ body.js-anim .rv{ transition:none; }
 <section class="scrub" id="rutin" aria-label="Hermes gumivitamin – flakon töltés animáció">
   <div class="scrub__sticky">
     <div class="scrub__head">
-      <div class="eyebrow">A Hermes-rutin</div>
-      <h2>Görgessen — így telik meg a napja</h2>
+      <div class="eyebrow">Hermes gumivitamin</div>
+      <h2>Egy flakon — egy havi adag</h2>
+      <p class="scrub__sub">Praktikus kiszerelésben.</p>
     </div>
     <div class="scrub__stage">
       <canvas class="scrub__canvas" width="440" height="1056" role="img" aria-label="Hermes gumivitamin flakon, amely megtelik narancs gumicukrokkal"></canvas>
       <div class="scrub__loader">Animáció betöltése… 0%</div>
-    </div>
-    <div class="scrub__cap">
-      <div class="cap1"><strong>Reggel egy jó döntés</strong></div>
-      <div class="cap2" style="opacity:0"><strong>Egyszerűen elrágja</strong> — nincs kapszula, nincs víz</div>
-      <div class="cap3" style="opacity:0"><strong>…és kész a napi rutin.</strong> Cukor-, glutén- és laktózmentesen.</div>
     </div>
     <div class="scrub__prog"><span></span></div>
   </div>
@@ -667,7 +668,6 @@ body.js-anim .rv{ transition:none; }
 <!-- V2: animációs könyvtárak -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
 
 <script>
 /* ========== REVEAL + COUNT-UP — GSAP/Lenis, vanilla fallbackkel ========== */
@@ -685,9 +685,9 @@ body.js-anim .rv{ transition:none; }
     var loader=track.querySelector('.scrub__loader');
     var prog=track.querySelector('.scrub__prog > span');
     var cap1=track.querySelector('.cap1'), cap2=track.querySelector('.cap2'), cap3=track.querySelector('.cap3');
-    var FRAMES=120, W=440, H=1056;
+    var FRAMES=80, W=300, H=720;
     var ctx=canvas.getContext('2d');
-    var dpr=Math.min(window.devicePixelRatio||1,2);
+    var dpr=Math.min(window.devicePixelRatio||1,1.25);
     canvas.width=W*dpr; canvas.height=H*dpr; ctx.scale(dpr,dpr);
     function path(i){ return 'frames/frame_'+String(i).padStart(3,'0')+'.jpg'; }
     function drawImg(im){ ctx.clearRect(0,0,W,H); ctx.drawImage(im,0,0,W,H); }
@@ -708,7 +708,9 @@ body.js-anim .rv{ transition:none; }
         if(loader)loader.textContent='Animáció betöltése… '+Math.round(loaded/FRAMES*100)+'%';
         if(i===0)draw(0);
         if(loaded===FRAMES){ if(loader)loader.style.display='none';
-          ScrollTrigger.create({ trigger:track, start:'top top', end:'bottom bottom', scrub:true,
+          ScrollTrigger.create({ trigger:track, start:'top top',
+            end:function(){ return '+=' + (track.offsetHeight - window.innerHeight); }, scrub:true,
+            invalidateOnRefresh:true,
             onUpdate:function(self){ var p=self.progress;
               draw(Math.round(p*(FRAMES-1)));
               if(prog)prog.style.width=(p*100)+'%';
@@ -736,16 +738,8 @@ body.js-anim .rv{ transition:none; }
   function rich(){
     document.body.classList.add('js-anim');
     gsap.registerPlugin(ScrollTrigger);
-
-    var lenis=new Lenis({ duration:1.1, easing:function(t){return 1-Math.pow(1-t,3);}, smoothWheel:true });
-    lenis.on('scroll', ScrollTrigger.update);
-    gsap.ticker.add(function(time){ lenis.raf(time*1000); }); gsap.ticker.lagSmoothing(0);
-
-    /* belső horgony-linkek Lenisszel */
-    document.querySelectorAll('a[href^="#"]').forEach(function(a){
-      a.addEventListener('click',function(e){ var id=a.getAttribute('href'); if(id.length>1){ var t=document.querySelector(id);
-        if(t){ e.preventDefault(); lenis.scrollTo(t,{offset:-72}); } } });
-    });
+    /* NATÍV görgetés — nincs Lenis (gyors, nem ragad be). A horgony-linkek a
+       CSS scroll-behavior:smooth-tal simán mozognak. */
 
     /* scroll-progress */
     var bar=document.querySelector('.progress');
