@@ -265,6 +265,25 @@ body.js-anim .rv{ transition:none; }
   body.js-anim .rv{ opacity:1 !important; transform:none !important; }
   .progress{ display:none; }
 }
+/* Scroll-scrub: flakon töltés */
+.scrub{ position:relative; height:300vh; }
+.scrub__sticky{ position:sticky; top:0; height:100vh; min-height:600px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:clamp(14px,2vh,24px); padding:84px var(--gutter) 44px; overflow:hidden;
+  background: radial-gradient(120% 85% at 50% 0%, var(--green-50) 0%, transparent 52%), var(--cream); }
+.scrub__head{ text-align:center; max-width:34ch; }
+.scrub__head h2{ font-size:clamp(1.5rem,1.1rem+1.6vw,2.2rem); margin-top:8px; }
+.scrub__stage{ position:relative; }
+.scrub__canvas{ height:min(56vh,520px); width:auto; aspect-ratio:440/1056; display:block; border-radius:24px; box-shadow:0 30px 60px -24px rgba(12,49,78,.32); background:#cfd0cd; }
+.scrub__loader{ position:absolute; inset:0; display:flex; align-items:center; justify-content:center; border-radius:24px; background:#dcdcda; color:var(--muted); font:14px/1.4 var(--font); letter-spacing:.02em; }
+.scrub__cap{ position:relative; width:100%; max-width:36ch; height:3.6em; text-align:center; }
+.scrub__cap > div{ position:absolute; inset:0; display:flex; align-items:center; justify-content:center; color:var(--ink-soft); font-size:1.05rem; transition:opacity .18s linear; padding:0 8px; }
+.scrub__cap strong{ color:var(--navy); }
+.scrub__prog{ width:min(280px,64vw); height:4px; background:var(--line); border-radius:4px; overflow:hidden; }
+.scrub__prog > span{ display:block; height:100%; width:0; background:linear-gradient(90deg, var(--green), var(--clay)); }
+@media (prefers-reduced-motion: reduce){
+  .scrub{ height:auto !important; }
+  .scrub__sticky{ position:static; height:auto; min-height:0; padding:var(--section-y) var(--gutter); }
+  .scrub__prog{ display:none; }
+}
 </style>
 </head>
 <body>
@@ -378,6 +397,26 @@ body.js-anim .rv{ transition:none; }
       </div>
 
     </div>
+  </div>
+</section>
+
+<!-- ===== SCROLL-SCRUB: FLAKON TÖLTÉS ===== -->
+<section class="scrub" id="rutin" aria-label="Hermes gumivitamin – flakon töltés animáció">
+  <div class="scrub__sticky">
+    <div class="scrub__head">
+      <div class="eyebrow">A Hermes-rutin</div>
+      <h2>Görgessen — így telik meg a napja</h2>
+    </div>
+    <div class="scrub__stage">
+      <canvas class="scrub__canvas" width="440" height="1056" role="img" aria-label="Hermes gumivitamin flakon, amely megtelik narancs gumicukrokkal"></canvas>
+      <div class="scrub__loader">Animáció betöltése… 0%</div>
+    </div>
+    <div class="scrub__cap">
+      <div class="cap1"><strong>Reggel egy jó döntés</strong></div>
+      <div class="cap2" style="opacity:0"><strong>Egyszerűen elrágja</strong> — nincs kapszula, nincs víz</div>
+      <div class="cap3" style="opacity:0"><strong>…és kész a napi rutin.</strong> Cukor-, glutén- és laktózmentesen.</div>
+    </div>
+    <div class="scrub__prog"><span></span></div>
   </div>
 </section>
 
@@ -639,6 +678,50 @@ body.js-anim .rv{ transition:none; }
   function parse(raw){ var dec=raw.indexOf(',')>=0?(raw.split(',')[1]||'').length:0; return {dec:dec, val:parseFloat(raw.replace(',','.'))}; }
   function setCount(el,v,dec,suf){ var s=v.toFixed(dec); el.textContent=(dec?s.replace('.',','):s)+suf; }
 
+  /* --- Scroll-scrub: flakon töltés (canvas kockázás) --- */
+  function initScrub(richMode){
+    var track=document.querySelector('.scrub'); if(!track) return;
+    var canvas=track.querySelector('.scrub__canvas'); if(!canvas) return;
+    var loader=track.querySelector('.scrub__loader');
+    var prog=track.querySelector('.scrub__prog > span');
+    var cap1=track.querySelector('.cap1'), cap2=track.querySelector('.cap2'), cap3=track.querySelector('.cap3');
+    var FRAMES=120, W=440, H=1056;
+    var ctx=canvas.getContext('2d');
+    var dpr=Math.min(window.devicePixelRatio||1,2);
+    canvas.width=W*dpr; canvas.height=H*dpr; ctx.scale(dpr,dpr);
+    function path(i){ return 'frames/frame_'+String(i).padStart(3,'0')+'.jpg'; }
+    function drawImg(im){ ctx.clearRect(0,0,W,H); ctx.drawImage(im,0,0,W,H); }
+    var c01=function(x){ return Math.max(0,Math.min(1,x)); };
+
+    if(!richMode){ /* fallback: statikus vég-kocka (tele flakon) */
+      track.style.height='auto';
+      var imf=new Image(); imf.onload=function(){ drawImg(imf); if(loader)loader.style.display='none';
+        if(cap1)cap1.style.opacity=0; if(cap2)cap2.style.opacity=0; if(cap3)cap3.style.opacity=1; };
+      imf.src=path(FRAMES); return;
+    }
+
+    var imgs=new Array(FRAMES), loaded=0, cur=-1;
+    function draw(idx){ idx=Math.max(0,Math.min(FRAMES-1,idx)); if(idx===cur)return; var im=imgs[idx];
+      if(im&&im.complete&&im.naturalWidth){ drawImg(im); cur=idx; } }
+    for(var i=0;i<FRAMES;i++){ (function(i){ var im=new Image();
+      im.onload=function(){ loaded++;
+        if(loader)loader.textContent='Animáció betöltése… '+Math.round(loaded/FRAMES*100)+'%';
+        if(i===0)draw(0);
+        if(loaded===FRAMES){ if(loader)loader.style.display='none';
+          ScrollTrigger.create({ trigger:track, start:'top top', end:'bottom bottom', scrub:true,
+            onUpdate:function(self){ var p=self.progress;
+              draw(Math.round(p*(FRAMES-1)));
+              if(prog)prog.style.width=(p*100)+'%';
+              if(cap1)cap1.style.opacity=c01(1-p/0.30);
+              if(cap2)cap2.style.opacity=c01(Math.min((p-0.30)/0.10,(0.72-p)/0.10));
+              if(cap3)cap3.style.opacity=c01((p-0.72)/0.12);
+            }});
+          ScrollTrigger.refresh();
+        }
+      };
+      im.src=path(i+1); imgs[i]=im; })(i); }
+  }
+
   /* --- Fallback: reduced-motion vagy nincs GSAP --- */
   function vanilla(){
     document.querySelectorAll('.rv').forEach(function(e){ e.classList.add('rv-in'); });
@@ -646,6 +729,7 @@ body.js-anim .rv{ transition:none; }
       var raw=(el.dataset.count||'').trim(), p=parse(raw), suf=el.dataset.suffix||'';
       if(isNaN(p.val)){ el.textContent=raw+suf; return; } setCount(el,p.val,p.dec,suf);
     });
+    initScrub(false);
   }
 
   /* --- Gazdag: GSAP + Lenis scroll-vezérelt --- */
@@ -708,6 +792,7 @@ body.js-anim .rv{ transition:none; }
       lastY=y;
     }});
 
+    initScrub(true);
     ScrollTrigger.refresh();
   }
 
