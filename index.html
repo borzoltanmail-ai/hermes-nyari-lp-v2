@@ -837,5 +837,64 @@ body.js-anim .rv{ transition:none; }
   });
 })();
 </script>
+<!-- ===== KONVERZIÓS ESEMÉNYEK (GA4 + Meta Pixel) ===== -->
+<script>
+(function(){
+  function track(gaEvent, gaParams, fbEvent, fbMode, fbParams){
+    try{ if(window.gtag && gaEvent) gtag('event', gaEvent, gaParams||{}); }catch(e){}
+    try{ if(window.fbq && fbEvent) fbq(fbMode==='custom'?'trackCustom':'track', fbEvent, fbParams||{}); }catch(e){}
+  }
+  function num(s){ return parseInt(String(s||'').replace(/[^\d]/g,''),10)||0; }
+
+  function init(){
+    /* 1) Oldalmegtekintés = ajánlat-megtekintés */
+    track('view_promotion', {promotion_id:'NYAR25', promotion_name:'Nyári bevezető akció -25%'},
+          'ViewContent','track', {content_name:'Nyári kampány LP', content_category:'gumivitamin', currency:'HUF'});
+
+    /* 2) Termék „Kosárba" gombok → AddToCart */
+    document.querySelectorAll('.product').forEach(function(card){
+      var price=card.querySelector('.product__price .now'); var btn=card.querySelector('.btn');
+      if(!price || !btn) return;                      /* csak valódi termékkártya (van ára) */
+      var name=((card.querySelector('h3')||{}).textContent||'Termék').trim();
+      var val=num(price.textContent);
+      var href=btn.getAttribute('href')||''; var m=href.match(/utm_content=([a-z]+)/i); var id=m?m[1]:name;
+      btn.addEventListener('click', function(){
+        track('add_to_cart',
+          {currency:'HUF', value:val, items:[{item_id:id, item_name:name, price:val, quantity:1}]},
+          'AddToCart','track',
+          {content_type:'product', content_ids:[id], content_name:name, value:val, currency:'HUF'});
+        /* Google Ads konverzió — ha lesz konverzió-akció, töltsd ki a címkét:
+        gtag('event','conversion',{send_to:'AW-16844744525/KONVERZIO_CIMKE', value:val, currency:'HUF'}); */
+      });
+    });
+
+    /* 3) Kupon „Másolás" → erős vásárlási szándék */
+    var copy=document.getElementById('copyBtn');
+    if(copy) copy.addEventListener('click', function(){
+      track('select_promotion', {promotion_id:'NYAR25', promotion_name:'Kupon másolva (NYAR25)'},
+            'CouponCopied','custom', {coupon:'NYAR25', currency:'HUF'});
+    });
+
+    /* 4) Kifelé mutató webshop-CTA-k (Összes termék, Tovább a webshopra) → Lead */
+    document.querySelectorAll('a.btn[href*="hermes-medical.com"]').forEach(function(a){
+      var card=a.closest('.product'); if(card && card.querySelector('.product__price')) return;
+      a.addEventListener('click', function(){
+        var label=(a.textContent||'CTA').replace(/\s+/g,' ').trim();
+        track('select_promotion', {promotion_id:'NYAR25', promotion_name:label, link_url:a.href},
+              'Lead','track', {content_name:label, currency:'HUF'});
+      });
+    });
+
+    /* 5) Belső „Termékekhez ugrás" CTA-k (hero + záró) → engagement */
+    document.querySelectorAll('a.btn[href*="#termekek"]').forEach(function(a){
+      a.addEventListener('click', function(){
+        track('select_content', {content_type:'cta', item_id:'view_products'}, 'ViewProducts','custom', {});
+      });
+    });
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', init); else init();
+})();
+</script>
+<!-- ===== /KONVERZIÓS ESEMÉNYEK ===== -->
 </body>
 </html>
