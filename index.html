@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- PRIVÁT ELŐNÉZET: amíg nem éles, hagyd bent. Élesítéskor töröld. -->
+<meta name="robots" content="noindex, nofollow">
+<title>Miért a Hermes Medical? — Nyári bevezető akció, 25% kedvezmény a NYAR25 kuponnal</title>
+<meta name="description" content="Magyarország prémium gumivitamin márkája. Rágható, finom, cukor-, laktóz- és gluténmentes étrend-kiegészítők öt területre. Nyári bevezető akció: 25% kedvezmény a NYAR25 kuponnal.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"></noscript>
+
+<style>
+:root{
+  /* ====== HERMES MEDICAL MÁRKA (a hermes-medical.com főoldaláról) ====== */
+  --bg:           #F8FAFC;   /* oldal háttér (--hm-page) */
+  --surface:      #FFFFFF;   /* kártya/panel (--hm-surface) */
+  --surface-soft: #F5F8FB;   /* halvány panel */
+  --cream:        #FAF5EC;   /* meleg háttér (akció/„miért” szekció) */
+  --ink:          #0F172A;   /* fő szöveg / sötét címsor (--hm-ink) */
+  --ink-soft:     #334155;   /* másodlagos szöveg (--hm-ink-soft) */
+  --muted:        #64748B;   /* halvány szöveg (--hm-muted) */
+  --line:         #E2E8F0;   /* vonal/keret (--hm-line) */
+
+  --navy:         #0C314E;   /* márka navy (--brand) — fejléc, footer, címsor */
+  --navy-700:     #1F4A73;   /* világosabb navy */
+  --green:        #16A34A;   /* akcent zöld (--accent) — CTA */
+  --green-600:    #15803D;   /* zöld hover/sötétebb */
+  --green-100:    #DCFCE7;   /* zöld halvány */
+  --green-50:     #F0FDF4;   /* zöld nagyon halvány */
+  --clay:         #EA580C;   /* clay/terrakotta — kiemelés, akció */
+  --clay-600:     #C2410C;   /* sötétebb clay */
+  --clay-100:     #FFEDD5;   /* clay halvány */
+
+  --font: "Outfit", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* ====== TECHNIKAI TOKENEK (landing-kit, márka-független) ====== */
+  --ease-out:      cubic-bezier(0.16, 1, 0.3, 1);     /* belépő/kilépő, snappy */
+  --ease-out-emil: cubic-bezier(0.23, 1, 0.32, 1);    /* Emil ajánlott ease-out */
+  --ease-drawer:   cubic-bezier(0.32, 0.72, 0, 1);    /* iOS-szerű drawer */
+  --dur-fast:   120ms; --dur-normal: 200ms; --dur-slow: 360ms;
+  --gutter: clamp(1rem, 4vw, 3rem);
+  --section-y: clamp(3.25rem, 5vw, 6rem);
+  --container: 1160px;
+  --radius: 14px;
+  --radius-lg: 20px;
+  --shadow-sm: 0 1px 2px rgba(12,49,78,.06), 0 1px 1px rgba(12,49,78,.04);
+  --shadow-md: 0 10px 30px -12px rgba(12,49,78,.18), 0 4px 10px -6px rgba(12,49,78,.10);
+  --shadow-cta: 0 10px 24px -10px rgba(22,163,74,.55);
+}
+
+*{ margin:0; padding:0; box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+body{ background:var(--bg); color:var(--ink-soft); font-family:var(--font); font-size:17px; line-height:1.65; -webkit-font-smoothing:antialiased; }
+h1,h2,h3,h4{ font-family:var(--font); color:var(--ink); line-height:1.15; letter-spacing:-.01em; font-weight:700; }
+a{ color:inherit; }
+img{ display:block; max-width:100%; }
+em{ font-style:normal; color:var(--clay); }
+strong{ color:var(--ink); font-weight:600; }
+::selection{ background:var(--green-100); color:var(--navy); }
+
+/* ---------- Konténer / szekció ---------- */
+.wrap{ max-width:var(--container); margin:0 auto; padding-left:var(--gutter); padding-right:var(--gutter); }
+.section{ padding-top:var(--section-y); padding-bottom:var(--section-y); }
+.eyebrow{ display:inline-block; text-transform:uppercase; letter-spacing:.14em; font-size:12.5px; font-weight:700; color:var(--clay-600); }
+.section-head{ max-width:62ch; margin:0 auto 40px; text-align:center; }
+.section-head h2{ font-size:clamp(1.7rem,1.1rem+2.4vw,2.5rem); margin:12px 0 14px; }
+.section-head p{ color:var(--muted); font-size:1.08rem; }
+
+/* ---------- GOMB (Emil press-feedback) ---------- */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:.55em;
+  font-family:var(--font); font-weight:600; font-size:1rem; letter-spacing:.005em;
+  padding:15px 28px; border-radius:var(--radius); border:1.5px solid transparent;
+  background:var(--green); color:#fff; cursor:pointer; text-decoration:none; white-space:nowrap;
+  box-shadow:var(--shadow-cta);
+  transition: transform var(--dur-fast) var(--ease-out), background var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out);
+}
+.btn--lg{ padding:18px 38px; font-size:1.08rem; }
+.btn--navy{ background:var(--navy); box-shadow:0 10px 24px -12px rgba(12,49,78,.5); }
+.btn--outline{ background:transparent; border-color:var(--line); color:var(--navy); box-shadow:none; }
+.btn--ghost{ background:rgba(255,255,255,.14); border-color:rgba(255,255,255,.28); color:#fff; box-shadow:none; }
+.btn:active{ transform:scale(0.97); }
+@media (hover:hover) and (pointer:fine){
+  .btn:hover{ background:var(--green-600); }
+  .btn--navy:hover{ background:var(--navy-700); }
+  .btn--outline:hover{ background:var(--surface-soft); }
+  .btn--ghost:hover{ background:rgba(255,255,255,.24); }
+}
+
+/* ---------- SCROLL-REVEAL ---------- */
+.rv{ opacity:0; transform:translateY(22px); transition:opacity .65s var(--ease-out), transform .65s var(--ease-out); will-change:opacity,transform; }
+.rv.rv-in{ opacity:1; transform:none; }
+.rv-d1{ transition-delay:.07s; } .rv-d2{ transition-delay:.14s; } .rv-d3{ transition-delay:.21s; } .rv-d4{ transition-delay:.28s; }
+@media (prefers-reduced-motion: reduce){
+  .rv,.rv-d1,.rv-d2,.rv-d3,.rv-d4{ opacity:1 !important; transform:none !important; transition:none !important; }
+  html{ scroll-behavior:auto; }
+}
+
+/* ---------- FEJLÉC + HAMBURGER (760px) ---------- */
+.promo{ background:var(--clay); color:#fff; text-align:center; font-size:13.5px; font-weight:500; padding:8px 16px; letter-spacing:.01em; }
+.promo strong{ color:#fff; font-weight:700; }
+.hdr{ position:sticky; top:0; z-index:60; background:rgba(255,255,255,.88); backdrop-filter:blur(12px) saturate(1.4); border-bottom:1px solid var(--line); }
+.hdr__in{ max-width:var(--container); margin:0 auto; padding:0 var(--gutter); height:68px; display:flex; align-items:center; justify-content:space-between; gap:24px; }
+.hdr__logo{ display:flex; align-items:center; gap:10px; text-decoration:none; }
+.hdr__logo img{ height:40px; width:auto; }
+.nav{ display:flex; align-items:center; gap:28px; }
+.nav a{ font-size:15px; font-weight:500; color:var(--ink-soft); text-decoration:none; transition:color var(--dur-fast); }
+@media (hover:hover) and (pointer:fine){ .nav a:hover{ color:var(--navy); } }
+.nav .btn{ padding:10px 20px; font-size:.95rem; }
+.burger{ display:none; flex-direction:column; justify-content:center; gap:5px; width:46px; height:46px; padding:0 12px; border:1.5px solid var(--line); border-radius:12px; background:transparent; cursor:pointer; transition:transform var(--dur-fast) var(--ease-out); }
+.burger span{ display:block; height:2px; width:100%; background:var(--navy); border-radius:2px; transition:transform var(--dur-normal) var(--ease-out), opacity var(--dur-fast); }
+.burger:active{ transform:scale(0.94); }
+.burger.open span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
+.burger.open span:nth-child(2){ opacity:0; }
+.burger.open span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
+.menu{ display:none; }
+@media (max-width:760px){
+  .nav{ display:none; }
+  .burger{ display:flex; }
+  .menu{ display:flex; flex-direction:column; overflow:hidden; max-height:0; opacity:0; padding:0 var(--gutter); background:#fff; border-bottom:1px solid transparent;
+    transition:max-height var(--dur-slow) var(--ease-drawer), opacity var(--dur-normal), padding var(--dur-slow); }
+  .menu.open{ max-height:420px; opacity:1; padding:8px var(--gutter) 20px; border-bottom-color:var(--line); }
+  .menu a{ font-size:16px; color:var(--navy); font-weight:500; padding:14px 2px; border-bottom:1px solid var(--line); text-decoration:none; }
+  .menu .btn{ margin-top:14px; justify-content:center; }
+}
+
+/* ---------- HERO ---------- */
+.hero{ position:relative; background:
+   radial-gradient(120% 120% at 85% -10%, var(--green-50) 0%, transparent 45%),
+   radial-gradient(110% 110% at -10% 0%, #FFF7EE 0%, transparent 42%),
+   var(--bg); overflow:hidden; }
+.hero__in{ max-width:var(--container); margin:0 auto; padding:clamp(2.5rem,5vw,4.5rem) var(--gutter) clamp(2rem,4vw,3.5rem); text-align:center; }
+.hero h1{ font-size:clamp(2rem,1.2rem+3.4vw,3.5rem); font-weight:800; max-width:18ch; margin:16px auto 18px; letter-spacing:-.02em; }
+.hero .lead{ font-size:clamp(1.05rem,1rem+.4vw,1.28rem); color:var(--ink-soft); max-width:60ch; margin:0 auto 26px; }
+.hero__cta{ display:flex; flex-wrap:wrap; gap:14px; justify-content:center; align-items:center; }
+.coupon-chip{ display:inline-flex; align-items:center; gap:10px; margin-top:26px; padding:10px 16px 10px 18px; background:var(--surface); border:1.5px dashed var(--clay); border-radius:999px; box-shadow:var(--shadow-sm); font-size:.95rem; color:var(--ink-soft); }
+.coupon-chip b{ font-family:"Outfit",monospace; letter-spacing:3px; color:var(--clay-600); font-weight:800; }
+.hero__badges{ display:flex; flex-wrap:wrap; gap:8px 22px; justify-content:center; margin-top:30px; color:var(--muted); font-size:.92rem; }
+.hero__badges span{ display:inline-flex; align-items:center; gap:7px; }
+.tick{ color:var(--green); font-weight:800; }
+
+/* ---------- USP SÁV ---------- */
+.usp{ background:var(--navy); color:#fff; }
+.usp__in{ max-width:var(--container); margin:0 auto; padding:20px var(--gutter); display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+.usp__item{ display:flex; align-items:center; gap:11px; font-size:.95rem; color:rgba(255,255,255,.92); justify-content:center; text-align:left; }
+.usp__item svg{ flex:0 0 auto; width:22px; height:22px; color:var(--green-100); }
+@media (max-width:760px){ .usp__in{ grid-template-columns:1fr 1fr; gap:16px 12px; } .usp__item{ font-size:.88rem; } }
+
+/* ---------- „MIÉRT A HERMES" — 5 ok ---------- */
+.why{ background:var(--cream); }
+.reasons{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+.reasons .reason:first-child, .reasons .reason:nth-child(2){ grid-column:span 3; }
+@media (min-width:761px){
+  .reasons{ grid-template-columns:repeat(6,1fr); }
+  .reasons .reason{ grid-column:span 2; }
+  .reasons .reason:nth-child(1){ grid-column:span 3; }
+  .reasons .reason:nth-child(2){ grid-column:span 3; }
+}
+@media (max-width:760px){ .reasons{ grid-template-columns:1fr; } .reasons .reason{ grid-column:auto !important; } }
+.reason{ background:var(--surface); border:1px solid var(--line); border-radius:var(--radius-lg); padding:26px 26px 24px; box-shadow:var(--shadow-sm); }
+.reason__ic{ width:46px; height:46px; border-radius:12px; display:flex; align-items:center; justify-content:center; background:var(--green-50); color:var(--green); margin-bottom:14px; }
+.reason__ic svg{ width:24px; height:24px; }
+.reason h3{ font-size:1.18rem; margin-bottom:8px; }
+.reason p{ color:var(--ink-soft); font-size:1rem; }
+
+/* ---------- KUPON BOX ---------- */
+.couponband{ background:linear-gradient(135deg, var(--clay) 0%, var(--clay-600) 100%); border-radius:var(--radius-lg); padding:clamp(28px,4vw,44px); text-align:center; color:#fff; box-shadow:var(--shadow-md); }
+.couponband .eyebrow{ color:#FFE8D6; }
+.couponband h2{ color:#fff; font-size:clamp(1.5rem,1.1rem+1.8vw,2.1rem); margin:10px 0 6px; }
+.couponband p{ color:#FFE8D6; max-width:52ch; margin:0 auto 20px; }
+.couponcode{ display:inline-flex; align-items:center; gap:14px; background:#fff; border-radius:14px; padding:12px 14px 12px 24px; box-shadow:0 10px 24px -10px rgba(0,0,0,.3); }
+.couponcode b{ font-family:"Outfit",monospace; font-size:clamp(1.6rem,1.2rem+1.6vw,2.2rem); font-weight:800; letter-spacing:5px; color:var(--clay-600); }
+.couponcode .copy{ border:none; background:var(--navy); color:#fff; font-family:var(--font); font-weight:600; font-size:.9rem; padding:10px 16px; border-radius:10px; cursor:pointer; transition:transform var(--dur-fast) var(--ease-out), background var(--dur-fast); }
+.couponcode .copy:active{ transform:scale(.95); }
+@media (hover:hover){ .couponcode .copy:hover{ background:var(--navy-700); } }
+.couponband small{ display:block; margin-top:16px; color:#FFE2CC; font-size:.85rem; }
+
+/* ---------- TERMÉKEK ---------- */
+.products{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+@media (max-width:980px){ .products{ grid-template-columns:repeat(2,1fr); } }
+@media (max-width:600px){ .products{ grid-template-columns:1fr; } }
+.product{ position:relative; display:flex; flex-direction:column; background:var(--surface); border:1px solid var(--line); border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow-sm); transition:transform var(--dur-normal) var(--ease-out), box-shadow var(--dur-normal) var(--ease-out); }
+@media (hover:hover) and (pointer:fine){ .product:hover{ transform:translateY(-4px); box-shadow:var(--shadow-md); } }
+.product__media{ position:relative; background:var(--surface-soft); aspect-ratio:4/3; display:flex; align-items:center; justify-content:center; padding:18px; }
+.product__media img{ max-height:100%; width:auto; object-fit:contain; }
+.product__badge{ position:absolute; top:14px; left:14px; background:var(--clay); color:#fff; font-size:.78rem; font-weight:700; padding:5px 10px; border-radius:8px; letter-spacing:.02em; box-shadow:var(--shadow-sm); }
+.product__body{ display:flex; flex-direction:column; flex:1; padding:20px 22px 22px; }
+.product__body h3{ font-size:1.22rem; margin-bottom:6px; }
+.product__desc{ color:var(--muted); font-size:.95rem; margin-bottom:12px; }
+.product__ing{ font-size:.82rem; color:var(--navy-700); background:var(--green-50); border:1px solid var(--green-100); border-radius:8px; padding:8px 11px; margin-bottom:16px; line-height:1.45; }
+.product__price{ margin-top:auto; display:flex; align-items:baseline; gap:10px; flex-wrap:wrap; margin-bottom:14px; }
+.product__price s{ color:#9aa6b4; font-size:1rem; }
+.product__price .now{ color:var(--navy); font-size:1.5rem; font-weight:800; letter-spacing:-.01em; }
+.product__price .save{ font-size:.78rem; font-weight:700; color:var(--green-600); background:var(--green-100); padding:3px 8px; border-radius:6px; }
+.product .btn{ width:100%; }
+
+/* ---------- SOCIAL PROOF / STATOK ---------- */
+.proof{ background:var(--navy); color:#fff; }
+.proof .section-head h2{ color:#fff; }
+.proof .section-head p{ color:rgba(255,255,255,.72); }
+.stats{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-bottom:42px; }
+@media (max-width:760px){ .stats{ grid-template-columns:1fr; } }
+.stat{ text-align:center; background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.12); border-radius:var(--radius-lg); padding:30px 18px; }
+.stat__num{ font-size:clamp(2.2rem,1.6rem+2vw,3rem); font-weight:800; color:var(--green-100); line-height:1; letter-spacing:-.02em; }
+.stat__lbl{ margin-top:10px; color:rgba(255,255,255,.78); font-size:.98rem; }
+.quotes{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+@media (max-width:760px){ .quotes{ grid-template-columns:1fr; } }
+.quote{ background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12); border-radius:var(--radius-lg); padding:24px; }
+.quote__stars{ color:#FFC53D; letter-spacing:2px; font-size:1rem; margin-bottom:10px; }
+.quote p{ color:rgba(255,255,255,.92); font-size:1rem; margin-bottom:14px; }
+.quote__name{ color:rgba(255,255,255,.7); font-size:.88rem; font-weight:500; }
+
+/* ---------- GYIK ---------- */
+.faq{ max-width:760px; margin:0 auto; }
+.faq details{ border:1px solid var(--line); border-radius:var(--radius); background:var(--surface); margin-bottom:12px; overflow:hidden; box-shadow:var(--shadow-sm); }
+.faq summary{ list-style:none; cursor:pointer; padding:18px 22px; font-weight:600; color:var(--ink); display:flex; align-items:center; justify-content:space-between; gap:16px; font-size:1.05rem; }
+.faq summary::-webkit-details-marker{ display:none; }
+.faq summary .pm{ flex:0 0 auto; width:22px; height:22px; position:relative; transition:transform var(--dur-normal) var(--ease-out); }
+.faq summary .pm::before,.faq summary .pm::after{ content:""; position:absolute; background:var(--clay); border-radius:2px; }
+.faq summary .pm::before{ top:10px; left:2px; right:2px; height:2px; }
+.faq summary .pm::after{ left:10px; top:2px; bottom:2px; width:2px; transition:opacity var(--dur-fast); }
+.faq details[open] summary .pm::after{ opacity:0; }
+.faq__a{ padding:0 22px 20px; color:var(--ink-soft); font-size:1rem; }
+
+/* ---------- ZÁRÓ CTA ---------- */
+.finalcta{ text-align:center; background:
+   radial-gradient(100% 100% at 50% 0%, var(--green-50) 0%, transparent 55%), var(--bg); }
+.finalcta h2{ font-size:clamp(1.6rem,1.1rem+2vw,2.4rem); max-width:22ch; margin:0 auto 14px; }
+.finalcta p{ color:var(--muted); max-width:54ch; margin:0 auto 26px; }
+
+/* ---------- FOOTER ---------- */
+.footer{ background:var(--navy); color:rgba(255,255,255,.72); }
+.footer__in{ max-width:var(--container); margin:0 auto; padding:48px var(--gutter) 28px; }
+.footer__grid{ display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:32px; margin-bottom:32px; }
+@media (max-width:760px){ .footer__grid{ grid-template-columns:1fr; gap:26px; } }
+.footer h4{ color:#fff; font-size:.95rem; text-transform:uppercase; letter-spacing:.08em; margin-bottom:14px; }
+.footer a{ color:rgba(255,255,255,.72); text-decoration:none; }
+@media (hover:hover){ .footer a:hover{ color:#fff; text-decoration:underline; } }
+.footer__col p{ font-size:.95rem; line-height:1.7; }
+.footer__col ul{ list-style:none; }
+.footer__col li{ margin-bottom:9px; font-size:.95rem; }
+.footer__brand img{ height:64px; width:auto; margin-bottom:16px; background:#fff; padding:10px 16px; border-radius:14px; }
+.footer__legal{ border-top:1px solid rgba(255,255,255,.12); padding-top:20px; font-size:12px; color:rgba(255,255,255,.55); line-height:1.6; }
+.footer__legal a{ text-decoration:underline; }
+
+/* ============================================================
+   V2 — ANIMÁCIÓS RÉTEG (GSAP + Lenis, scroll-vezérelt)
+   ============================================================ */
+/* Scroll-progress sáv */
+.progress{ position:fixed; top:0; left:0; right:0; height:3px; transform:scaleX(0); transform-origin:0 50%; background:linear-gradient(90deg, var(--green), var(--clay)); z-index:100; }
+/* Úszó gumicukor-dekor */
+.deco{ position:absolute; inset:0; overflow:hidden; pointer-events:none; z-index:0; }
+.gummy{ position:absolute; border-radius:46% 54% 52% 48% / 50% 48% 52% 50%; will-change:transform;
+  box-shadow: inset 0 6px 14px rgba(255,255,255,.5), inset 0 -10px 18px rgba(0,0,0,.12), 0 12px 26px -12px rgba(12,49,78,.25); }
+.hero__in, .why .wrap, .finalcta .wrap, .proof .wrap{ position:relative; z-index:1; }
+@media (max-width:600px){ .gummy{ transform:scale(.7); opacity:.4 !important; } .gummy[data-mobile="hide"]{ display:none; } }
+/* Animáció kezdőállapot — CSAK ha JS+GSAP fut (body.js-anim). Különben minden látszik. */
+body.js-anim .rv{ transition:none; }
+.hdr{ will-change:transform; }
+@media (prefers-reduced-motion: reduce){
+  body.js-anim .rv{ opacity:1 !important; transform:none !important; }
+  .progress{ display:none; }
+}
+</style>
+</head>
+<body>
+
+<!-- scroll-progress -->
+<div class="progress" aria-hidden="true"></div>
+
+<!-- ===== PROMO SÁV ===== -->
+<div class="promo">Nyári bevezető akció — <strong>25% kedvezmény</strong> a <strong>NYAR25</strong> kuponnal · 2026. június 30-ig</div>
+
+<!-- ===== FEJLÉC ===== -->
+<header class="hdr">
+  <div class="hdr__in">
+    <a class="hdr__logo" href="#top" aria-label="Hermes Medical">
+      <img src="https://hermes-medical.com/images/products/hermes-logo-email.png" alt="Hermes Medical" width="160" height="38">
+    </a>
+    <nav class="nav">
+      <a href="#miert">Miért mi?</a>
+      <a href="#termekek">Termékek</a>
+      <a href="#gyik">Kérdések</a>
+      <a class="btn" href="#termekek">−25% most</a>
+    </nav>
+    <button class="burger" aria-label="Menü" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+  <div class="menu">
+    <a href="#miert">Miért mi?</a>
+    <a href="#termekek">Termékek</a>
+    <a href="#gyik">Kérdések</a>
+    <a class="btn" href="#termekek">Rendelés −25% kedvezménnyel</a>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="top">
+  <div class="deco" aria-hidden="true">
+    <span class="gummy" data-depth="1.4" style="top:11%;left:6%;width:92px;height:92px;background:radial-gradient(circle at 35% 30%, #4ADE80, #16A34A);opacity:.55"></span>
+    <span class="gummy" data-depth="0.8" style="top:20%;right:8%;width:66px;height:66px;background:radial-gradient(circle at 35% 30%, #FDBA74, #EA580C);opacity:.5"></span>
+    <span class="gummy" data-depth="1.9" data-mobile="hide" style="bottom:16%;left:13%;width:48px;height:48px;background:radial-gradient(circle at 35% 30%, #86EFAC, #22C55E);opacity:.5"></span>
+    <span class="gummy" data-depth="1.1" data-mobile="hide" style="bottom:22%;right:15%;width:80px;height:80px;background:radial-gradient(circle at 35% 30%, #93C5FD, #1F4A73);opacity:.32"></span>
+    <span class="gummy" data-depth="0.6" data-mobile="hide" style="top:58%;left:46%;width:38px;height:38px;background:radial-gradient(circle at 35% 30%, #FECDD3, #FB7185);opacity:.4"></span>
+  </div>
+  <div class="hero__in">
+    <div class="rv eyebrow">Hermes Medical · Prémium gumivitamin</div>
+    <h1 class="rv rv-d1">Miért a Hermes Medical a <em>legjobb</em> étrend-kiegészítő az Ön számára?</h1>
+    <p class="rv rv-d2 lead">A gumivitamin a legkönnyebben bevehető forma: rágható, finom, cukor-, laktóz- és gluténmentes. A leghatékonyabb étrend-kiegészítő ugyanis az, amit valóban bevesz minden nap. A nyári bevezető akcióban most <strong>25% kedvezménnyel</strong> próbálhatja ki.</p>
+    <div class="rv rv-d3 hero__cta">
+      <a class="btn btn--lg" href="#termekek">Termékek böngészése −25% →</a>
+      <a class="btn btn--lg btn--outline" href="#miert">Miért gumivitamin?</a>
+    </div>
+    <div class="rv rv-d3 coupon-chip">Kuponkód: <b>NYAR25</b> <span style="color:var(--muted)">— 25% az első rendelésére</span></div>
+    <div class="rv rv-d4 hero__badges">
+      <span><i class="tick">✓</i> Cukor-, glutén- és laktózmentes</span>
+      <span><i class="tick">✓</i> OGYÉI bejelentett</span>
+      <span><i class="tick">✓</i> Magyar fejlesztés</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== USP SÁV ===== -->
+<section class="usp">
+  <div class="usp__in">
+    <div class="usp__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg> Ingyenes szállítás 10.000 Ft-tól</div>
+    <div class="usp__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M21 12c0 5-3.5 7.5-8.5 9-5-1.5-8.5-4-8.5-9V5l8.5-3 8.5 3z"/></svg> 14 napos pénzvisszafizetési garancia</div>
+    <div class="usp__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 6 6 .9-4.5 4.3 1 6.3L12 17l-5.5 2.8 1-6.3L3 8.9 9 8z"/></svg> OGYÉI bejelentett termékek</div>
+    <div class="usp__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> SimplePay biztonságos fizetés</div>
+  </div>
+</section>
+
+<!-- ===== MIÉRT A HERMES MEDICAL — 5 OK ===== -->
+<section class="section why" id="miert">
+  <div class="deco" aria-hidden="true">
+    <span class="gummy" data-depth="1.5" data-mobile="hide" style="top:8%;right:5%;width:74px;height:74px;background:radial-gradient(circle at 35% 30%, #FDBA74, #EA580C);opacity:.4"></span>
+    <span class="gummy" data-depth="1.0" data-mobile="hide" style="bottom:10%;left:4%;width:58px;height:58px;background:radial-gradient(circle at 35% 30%, #86EFAC, #16A34A);opacity:.4"></span>
+  </div>
+  <div class="wrap">
+    <div class="section-head rv">
+      <div class="eyebrow">Öt ok</div>
+      <h2>Amit minden Hermes Medical termék tud</h2>
+      <p>Nem egyetlen vitamint kap, hanem egy célzottan összeállított megoldást — olyan formában, amit könnyű nap mint nap betartani.</p>
+    </div>
+    <div class="reasons">
+
+      <div class="reason rv">
+        <div class="reason__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.35-9.5-9.5C1 8 3 5 6 5c2 0 3.5 1.5 6 4 2.5-2.5 4-4 6-4 3 0 5 3 3.5 6.5C19 16.65 12 21 12 21z"/></svg></div>
+        <h3>A legkönnyebben bevehető forma</h3>
+        <p>Nincs nagy, nehezen lenyelhető kapszula, nincs kellemetlen utóíz. Egyszerűen elrágja, és kész — így a napi étrend-kiegészítés nem nyűg, hanem pillanatok alatt elintézett rutin.</p>
+      </div>
+
+      <div class="reason rv rv-d1">
+        <div class="reason__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M5 5l14 14"/></svg></div>
+        <h3>Cukor-, glutén- és laktózmentes</h3>
+        <p>Akkor is nyugodtan választhatja, ha figyel a cukorbevitelére, érzékeny a gluténre vagy a laktózra. Olyan formula, amely beleillik a tudatos étrendbe, felesleges terhelés nélkül.</p>
+      </div>
+
+      <div class="reason rv">
+        <div class="reason__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c2.5 2 4 4.5 4 7a4 4 0 1 1-8 0c0-2.5 1.5-5 4-7z"/><path d="M8.5 14.5a3.5 3.5 0 0 0 7 0"/></svg></div>
+        <h3>Az ízük miatt valódi élmény</h3>
+        <p>Vásárlóink szerint olyan, mintha desszertet enne, nem pedig kötelező tablettát. Pont ezért lesz könnyű nap mint nap betartani — a kúra ugyanis csak akkor működik, ha következetes.</p>
+      </div>
+
+      <div class="reason rv rv-d1">
+        <div class="reason__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg></div>
+        <h3>Komplex, egymást erősítő formulák</h3>
+        <p>Minden termék egy-egy konkrét igényre épül, és az összetevők együtt, egymás hatását támogatva dolgoznak. Nem egyetlen vitamint kap, hanem célzott megoldást arra a területre, ami most fontos Önnek.</p>
+      </div>
+
+      <div class="reason rv rv-d2">
+        <div class="reason__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 3v6c0 5-3.5 8.5-8 11-4.5-2.5-8-6-8-11V5l8-3z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <h3>Ellenőrzött minőség</h3>
+        <p>Minden formulánk OGYÉI bejelentett, magyar szakértők fejlesztik, gondosan válogatott összetevőkből. Tudja, mit vesz — és kiben bízik.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== KUPON BOX ===== -->
+<section class="section" style="padding-top:0">
+  <div class="wrap">
+    <div class="couponband rv">
+      <div class="eyebrow">Bevezető kedvezmény · 2026. június 30-ig</div>
+      <h2>25% kedvezmény az első rendelésére</h2>
+      <p>Másolja ki a kuponkódot, és írja be a pénztárban. Mind az öt termékünkre érvényes.</p>
+      <div class="couponcode">
+        <b id="code">NYAR25</b>
+        <button class="copy" id="copyBtn" type="button">Másolás</button>
+      </div>
+      <small>Egy kupon egyszer használható fel · az akció 2026. június 30-ig érvényes</small>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TERMÉKEK ===== -->
+<section class="section" id="termekek" style="padding-top:0">
+  <div class="wrap">
+    <div class="section-head rv">
+      <div class="eyebrow">Öt terület, 25% kedvezménnyel</div>
+      <h2>Válassza ki, mire van most szüksége</h2>
+      <p>Célzott gumivitaminok egy-egy konkrét igényre — a feltüntetett árak már a NYAR25 kuponos kedvezményt tartalmazzák.</p>
+    </div>
+
+    <div class="products">
+
+      <!-- Porc -->
+      <article class="product rv">
+        <div class="product__media">
+          <span class="product__badge">−25%</span>
+          <img src="https://listmonk.hermes-medical.com/uploads/porc1_bf64Fz.jpg" alt="Hermes Porc gumivitamin" loading="lazy">
+        </div>
+        <div class="product__body">
+          <h3>Hermes Porc</h3>
+          <p class="product__desc">Az ízületek mindennapi mozgásának támogatására.</p>
+          <p class="product__ing">N-acetil-glükózamin · marha kollagén · hialuronsav · C-vitamin</p>
+          <div class="product__price"><s>7 490 Ft</s><span class="now">5 618 Ft</span><span class="save">−25%</span></div>
+          <a class="btn" href="https://hermes-medical.com/hermes-porc?utm_source=landing&utm_medium=cpc&utm_campaign=nyar25&utm_content=porc">Kosárba −25% →</a>
+        </div>
+      </article>
+
+      <!-- Emésztés -->
+      <article class="product rv rv-d1">
+        <div class="product__media">
+          <span class="product__badge">−25%</span>
+          <img src="https://listmonk.hermes-medical.com/uploads/emesztes1_GnaFcG.jpg" alt="Hermes Emésztés gumivitamin" loading="lazy">
+        </div>
+        <div class="product__body">
+          <h3>Hermes Emésztés</h3>
+          <p class="product__desc">Az egészséges emésztés mindennapi támogatására.</p>
+          <p class="product__ing">Almaecet por (1200 mg) · zöldalma ízben</p>
+          <div class="product__price"><s>6 990 Ft</s><span class="now">5 243 Ft</span><span class="save">−25%</span></div>
+          <a class="btn" href="https://hermes-medical.com/hermes-emesztes?utm_source=landing&utm_medium=cpc&utm_campaign=nyar25&utm_content=emesztes">Kosárba −25% →</a>
+        </div>
+      </article>
+
+      <!-- Immunrendszer -->
+      <article class="product rv rv-d2">
+        <div class="product__media">
+          <span class="product__badge">−25%</span>
+          <img src="https://listmonk.hermes-medical.com/uploads/immun1_qZUHOc.jpg" alt="Hermes Immunrendszer gumivitamin" loading="lazy">
+        </div>
+        <div class="product__body">
+          <h3>Hermes Immunrendszer</h3>
+          <p class="product__desc">A szervezet védekezőképességének támogatására.</p>
+          <p class="product__ing">C-vitamin · szelén · ginzeng · koenzim Q10</p>
+          <div class="product__price"><s>6 990 Ft</s><span class="now">5 243 Ft</span><span class="save">−25%</span></div>
+          <a class="btn" href="https://hermes-medical.com/hermes-immunrendszer?utm_source=landing&utm_medium=cpc&utm_campaign=nyar25&utm_content=immun">Kosárba −25% →</a>
+        </div>
+      </article>
+
+      <!-- Alvás -->
+      <article class="product rv">
+        <div class="product__media">
+          <span class="product__badge">−25%</span>
+          <img src="https://listmonk.hermes-medical.com/uploads/alvas1_KDnRHr.jpg" alt="Hermes Alvás gumivitamin" loading="lazy">
+        </div>
+        <div class="product__body">
+          <h3>Hermes Alvás</h3>
+          <p class="product__desc">A pihentető alvás és a relaxáció támogatására, reggeli álmosság nélkül.</p>
+          <p class="product__ing">Ashwagandha · macskagyökér · kamilla · cink</p>
+          <div class="product__price"><s>6 990 Ft</s><span class="now">5 243 Ft</span><span class="save">−25%</span></div>
+          <a class="btn" href="https://hermes-medical.com/hermes-alvas?utm_source=landing&utm_medium=cpc&utm_campaign=nyar25&utm_content=alvas">Kosárba −25% →</a>
+        </div>
+      </article>
+
+      <!-- Csontok -->
+      <article class="product rv rv-d1">
+        <div class="product__media">
+          <span class="product__badge">−25%</span>
+          <img src="https://listmonk.hermes-medical.com/uploads/csontok1_c0d2lG.jpg" alt="Hermes Csontok gumivitamin" loading="lazy">
+        </div>
+        <div class="product__body">
+          <h3>Hermes Csontok</h3>
+          <p class="product__desc">A csontok normál működésének támogatására.</p>
+          <p class="product__ing">D-vitamin · kalcium · K1-vitamin · magnézium</p>
+          <div class="product__price"><s>6 990 Ft</s><span class="now">5 243 Ft</span><span class="save">−25%</span></div>
+          <a class="btn" href="https://hermes-medical.com/hermes-csontok?utm_source=landing&utm_medium=cpc&utm_campaign=nyar25&utm_content=csontok">Kosárba −25% →</a>
+        </div>
+      </article>
+
+      <!-- Összes termék CTA kártya -->
+      <article class="product rv rv-d2" style="justify-content:center; align-items:center; text-align:center; background:var(--green-50); border-style:dashed; border-color:var(--green);">
+        <div class="product__body" style="justify-content:center; gap:14px;">
+          <h3 style="color:var(--navy)">Mind az öt terméket?</h3>
+          <p class="product__desc" style="margin:0">Nézze meg a teljes kínálatot a webshopban — a NYAR25 kuponnal minden termék 25%-kal olcsóbb.</p>
+          <a class="btn btn--navy" href="https://hermes-medical.com?utm_source=landing&utm_medium=cpc&utm_campaign=nyar25&utm_content=osszes">Összes termék →</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== SOCIAL PROOF / STATOK ===== -->
+<section class="section proof">
+  <div class="wrap">
+    <div class="section-head rv">
+      <div class="eyebrow" style="color:var(--green-100)">Növekvő számú elégedett vásárló</div>
+      <h2>Amiért könnyű következetesnek maradni</h2>
+      <p>Az étrend kiegészítése akkor működik, ha tartja a kúrát — ehhez pedig olyan vitamin kell, amit jó bevenni.</p>
+    </div>
+
+    <div class="stats">
+      <div class="stat rv"><div class="stat__num" data-count="5">0</div><div class="stat__lbl">célzott terület, egy-egy konkrét igényre</div></div>
+      <div class="stat rv rv-d1"><div class="stat__num" data-count="100" data-suffix="%">0</div><div class="stat__lbl">cukor-, glutén- és laktózmentes formula</div></div>
+      <div class="stat rv rv-d2"><div class="stat__num" data-count="14" data-suffix=" nap">0</div><div class="stat__lbl">pénzvisszafizetési garancia minden rendelésre</div></div>
+    </div>
+
+    <!-- A vélemények PLACEHOLDER-ek — cseréld valódi, jóváhagyott véleményekre. -->
+    <div class="quotes">
+      <div class="quote rv">
+        <div class="quote__stars">★★★★★</div>
+        <p>„Végre egy vitamin, amit tényleg minden reggel beveszek. Finom, és nem kell vízzel küzdeni vele.”</p>
+        <div class="quote__name">— Katalin, visszajelzés*</div>
+      </div>
+      <div class="quote rv rv-d1">
+        <div class="quote__stars">★★★★★</div>
+        <p>„Olyan, mint egy desszert. A gyerekem is kéri — pedig vitamin. A cukormentesség nálunk fontos volt.”</p>
+        <div class="quote__name">— Eszter, visszajelzés*</div>
+      </div>
+      <div class="quote rv rv-d2">
+        <div class="quote__stars">★★★★★</div>
+        <p>„Az ízületes terméket használom, könnyű beépíteni a napomba. Az összetevők is meggyőztek.”</p>
+        <div class="quote__name">— Gábor, visszajelzés*</div>
+      </div>
+    </div>
+    <p style="text-align:center; margin-top:16px; font-size:.8rem; color:rgba(255,255,255,.5)">*Illusztráció — valódi, jóváhagyott véleményekre cserélendő.</p>
+  </div>
+</section>
+
+<!-- ===== GYIK ===== -->
+<section class="section" id="gyik">
+  <div class="wrap">
+    <div class="section-head rv">
+      <div class="eyebrow">Mielőtt rendelne</div>
+      <h2>Hasznos tudni</h2>
+    </div>
+    <div class="faq rv">
+      <details>
+        <summary>Mennyi idő alatt érzem a hatást? <span class="pm"></span></summary>
+        <div class="faq__a">Az étrend-kiegészítők hatása fokozatos, és egyénenként eltérő. A kúra akkor működik, ha következetesen, nap mint nap szedi a terméket — ezért is fontos, hogy olyan formát válasszon, amit jó bevenni. Legalább néhány hetes, folyamatos szedés ajánlott.</div>
+      </details>
+      <details>
+        <summary>Szedhetem gyógyszerekkel együtt? <span class="pm"></span></summary>
+        <div class="faq__a">Ha rendszeresen szed gyógyszert, vagy bármilyen krónikus betegsége van, a párhuzamos alkalmazás előtt kérje ki kezelőorvosa vagy gyógyszerésze véleményét. Az étrend-kiegészítő nem helyettesíti a gyógyszeres kezelést.</div>
+      </details>
+      <details>
+        <summary>Hogyan történik a szállítás? <span class="pm"></span></summary>
+        <div class="faq__a">Rendelését futárszolgálattal vagy csomagpontra kézbesítjük. 10.000 Ft feletti rendelés esetén a szállítás ingyenes. A pontos díjakat és átvételi módokat a pénztárban választhatja ki.</div>
+      </details>
+      <details>
+        <summary>Mi a 14 napos pénzvisszafizetési garancia? <span class="pm"></span></summary>
+        <div class="faq__a">Ha nem elégedett, a kézhezvételtől számított 14 napon belül visszaküldheti a terméket, és visszatérítjük a vételárat. Nyugodtan kipróbálhatja a Hermes Medical formuláit.</div>
+      </details>
+      <details>
+        <summary>Mit jelent az OGYÉI bejelentés? <span class="pm"></span></summary>
+        <div class="faq__a">Minden termékünk az Országos Gyógyszerészeti és Élelmezés-egészségügyi Intézet (OGYÉI) felé bejelentett étrend-kiegészítő. Ez azt jelenti, hogy a termék összetétele és jelölése a hatóság felé dokumentált.</div>
+      </details>
+      <details>
+        <summary>Hol gyártják a termékeket? <span class="pm"></span></summary>
+        <div class="faq__a">Formuláinkat magyar szakértők fejlesztik, gondosan válogatott összetevőkből. Tudja, mit vesz, és kiben bízik.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ZÁRÓ CTA ===== -->
+<section class="section finalcta">
+  <div class="deco" aria-hidden="true">
+    <span class="gummy" data-depth="1.6" data-mobile="hide" style="top:14%;left:9%;width:70px;height:70px;background:radial-gradient(circle at 35% 30%, #86EFAC, #22C55E);opacity:.45"></span>
+    <span class="gummy" data-depth="0.9" data-mobile="hide" style="top:24%;right:11%;width:54px;height:54px;background:radial-gradient(circle at 35% 30%, #FDBA74, #EA580C);opacity:.4"></span>
+  </div>
+  <div class="wrap">
+    <div class="rv">
+      <div class="eyebrow">Nyári bevezető akció</div>
+      <h2>Próbálja ki most 25% kedvezménnyel</h2>
+      <p>A NYAR25 kuponnal mind az öt termékünk 25%-kal olcsóbb. Az akció 2026. június 30-ig érvényes.</p>
+      <div class="hero__cta">
+        <a class="btn btn--lg" href="#termekek">Termékek böngészése −25% →</a>
+        <a class="btn btn--lg btn--outline" href="https://hermes-medical.com?utm_source=landing&utm_medium=cpc&utm_campaign=nyar25&utm_content=final">Tovább a webshopra</a>
+      </div>
+      <div class="coupon-chip" style="margin-top:24px">Kuponkód: <b>NYAR25</b></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="footer__in">
+    <div class="footer__grid">
+      <div class="footer__col footer__brand">
+        <img src="https://hermes-medical.com/images/products/hermes-logo-email.png" alt="Hermes Medical" width="64" height="64">
+        <p>Magyarország prémium gumivitamin márkája. Rágható, finom, cukor-, laktóz- és gluténmentes étrend-kiegészítők öt területre — magyar fejlesztés, OGYÉI bejelentett formulák.</p>
+      </div>
+      <div class="footer__col">
+        <h4>Termékek</h4>
+        <ul>
+          <li><a href="https://hermes-medical.com/hermes-porc">Hermes Porc</a></li>
+          <li><a href="https://hermes-medical.com/hermes-emesztes">Hermes Emésztés</a></li>
+          <li><a href="https://hermes-medical.com/hermes-immunrendszer">Hermes Immunrendszer</a></li>
+          <li><a href="https://hermes-medical.com/hermes-alvas">Hermes Alvás</a></li>
+          <li><a href="https://hermes-medical.com/hermes-csontok">Hermes Csontok</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Kapcsolat</h4>
+        <p>
+          <strong style="color:#fff">Hermes Pharma Kft.</strong><br>
+          1138 Budapest, Hajóépítő sétány 4.<br>
+          <a href="mailto:info@hermes-medical.com">info@hermes-medical.com</a><br>
+          <a href="tel:+3614433975">+36 1 443-3975</a>
+        </p>
+      </div>
+    </div>
+    <div class="footer__legal">
+      Étrend-kiegészítő. Nem helyettesíti a kiegyensúlyozott, vegyes étrendet és az egészséges életmódot. A feltüntetett kedvezményes árak a NYAR25 kuponnal érvényesek; egy kupon csak egyszer használható fel, az akció 2026. június 30-ig tart.
+      <br><br>
+      © 2026 Hermes Pharma Kft. — Minden jog fenntartva. · <a href="https://hermes-medical.com/adatkezelesi-tajekoztato">Adatkezelési tájékoztató</a> · <a href="https://hermes-medical.com">hermes-medical.com</a>
+    </div>
+  </div>
+</footer>
+
+<!-- V2: animációs könyvtárak -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
+<script>
+/* ========== REVEAL + COUNT-UP — GSAP/Lenis, vanilla fallbackkel ========== */
+(function(){
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var haveGSAP = !!(window.gsap && window.ScrollTrigger);
+
+  function parse(raw){ var dec=raw.indexOf(',')>=0?(raw.split(',')[1]||'').length:0; return {dec:dec, val:parseFloat(raw.replace(',','.'))}; }
+  function setCount(el,v,dec,suf){ var s=v.toFixed(dec); el.textContent=(dec?s.replace('.',','):s)+suf; }
+
+  /* --- Fallback: reduced-motion vagy nincs GSAP --- */
+  function vanilla(){
+    document.querySelectorAll('.rv').forEach(function(e){ e.classList.add('rv-in'); });
+    document.querySelectorAll('[data-count]').forEach(function(el){
+      var raw=(el.dataset.count||'').trim(), p=parse(raw), suf=el.dataset.suffix||'';
+      if(isNaN(p.val)){ el.textContent=raw+suf; return; } setCount(el,p.val,p.dec,suf);
+    });
+  }
+
+  /* --- Gazdag: GSAP + Lenis scroll-vezérelt --- */
+  function rich(){
+    document.body.classList.add('js-anim');
+    gsap.registerPlugin(ScrollTrigger);
+
+    var lenis=new Lenis({ duration:1.1, easing:function(t){return 1-Math.pow(1-t,3);}, smoothWheel:true });
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add(function(time){ lenis.raf(time*1000); }); gsap.ticker.lagSmoothing(0);
+
+    /* belső horgony-linkek Lenisszel */
+    document.querySelectorAll('a[href^="#"]').forEach(function(a){
+      a.addEventListener('click',function(e){ var id=a.getAttribute('href'); if(id.length>1){ var t=document.querySelector(id);
+        if(t){ e.preventDefault(); lenis.scrollTo(t,{offset:-72}); } } });
+    });
+
+    /* scroll-progress */
+    var bar=document.querySelector('.progress');
+    if(bar) gsap.to(bar,{ scaleX:1, ease:'none', scrollTrigger:{ start:0, end:'max', scrub:0.3 } });
+
+    /* HERO belépő timeline (betöltéskor) */
+    var heroEls=gsap.utils.toArray('#top .rv');
+    gsap.set(heroEls,{ y:32, opacity:0 });
+    gsap.timeline({ defaults:{ ease:'power3.out' } })
+      .to(heroEls,{ y:0, opacity:1, duration:.9, stagger:.12, delay:.15 });
+
+    /* általános reveal (heroon kívül) — belépéskor */
+    gsap.utils.toArray('.rv').forEach(function(el){
+      if(el.closest('#top')) return;
+      gsap.set(el,{ y:36, opacity:0 });
+      ScrollTrigger.create({ trigger:el, start:'top 88%', once:true, onEnter:function(){
+        gsap.to(el,{ y:0, opacity:1, duration:.8, ease:'power3.out' });
+      }});
+    });
+
+    /* count-up scroll-ra */
+    document.querySelectorAll('[data-count]').forEach(function(el){
+      var raw=(el.dataset.count||'').trim(), p=parse(raw), suf=el.dataset.suffix||'';
+      if(isNaN(p.val)){ el.textContent=raw+suf; return; }
+      setCount(el,0,p.dec,suf); var o={v:0};
+      ScrollTrigger.create({ trigger:el, start:'top 90%', once:true, onEnter:function(){
+        gsap.to(o,{ v:p.val, duration:1.2, ease:'power2.out', onUpdate:function(){ setCount(el,o.v,p.dec,suf); } });
+      }});
+    });
+
+    /* úszó gumicukrok — parallax */
+    gsap.utils.toArray('.gummy').forEach(function(g){
+      var depth=parseFloat(g.dataset.depth||'1');
+      gsap.to(g,{ yPercent:-22*depth, rotation:14*depth, ease:'none',
+        scrollTrigger:{ trigger:g.closest('section')||document.body, start:'top bottom', end:'bottom top', scrub:true } });
+    });
+
+    /* fejléc: elrejt görgetéskor le, mutat fel */
+    var hdr=document.querySelector('.hdr'), lastY=0, hidden=false;
+    ScrollTrigger.create({ start:0, end:'max', onUpdate:function(self){
+      var y=self.scroll();
+      if(y>260 && y>lastY+4 && !hidden){ hidden=true; gsap.to(hdr,{ yPercent:-140, duration:.4, ease:'power2.out' }); }
+      else if((y<lastY-4 || y<260) && hidden){ hidden=false; gsap.to(hdr,{ yPercent:0, duration:.4, ease:'power2.out' }); }
+      lastY=y;
+    }});
+
+    ScrollTrigger.refresh();
+  }
+
+  if(reduce || !haveGSAP){ vanilla(); } else { rich(); }
+})();
+
+/* ========== HAMBURGER ========== */
+(function(){
+  var b=document.querySelector('.burger'), m=document.querySelector('.menu');
+  if(!b) return;
+  function close(){ b.classList.remove('open'); m.classList.remove('open'); b.setAttribute('aria-expanded','false'); }
+  b.addEventListener('click',function(){ var o=!b.classList.contains('open'); b.classList.toggle('open',o); m.classList.toggle('open',o); b.setAttribute('aria-expanded',o); });
+  m.querySelectorAll('a').forEach(function(a){ a.addEventListener('click',close); });
+})();
+
+/* ========== KUPON MÁSOLÁS ========== */
+(function(){
+  var btn=document.getElementById('copyBtn'), code=document.getElementById('code');
+  if(!btn) return;
+  btn.addEventListener('click',function(){
+    var t=(code.textContent||'NYAR25').trim();
+    var done=function(){ var o=btn.textContent; btn.textContent='Másolva ✓'; setTimeout(function(){btn.textContent=o;},1600); };
+    if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(t).then(done).catch(done); }
+    else { var ta=document.createElement('textarea'); ta.value=t; document.body.appendChild(ta); ta.select(); try{document.execCommand('copy');}catch(e){} ta.remove(); done(); }
+  });
+})();
+</script>
+</body>
+</html>
