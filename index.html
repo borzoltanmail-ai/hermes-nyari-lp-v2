@@ -268,16 +268,16 @@ body.js-anim .rv{ transition:none; }
 /* Scroll-scrub: flakon töltés */
 .scrub{ position:relative; height:280vh; }
 .scrub__sticky{ position:sticky; top:0; height:100vh; min-height:600px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:clamp(8px,1.4vh,16px); padding:56px var(--gutter) 28px; overflow:hidden;
+  /* A kockák szélét beégettük EBBE a lapos szürkébe (#CFCFC9), ezért a szekció
+     háttere is pontosan ez → a flakon „lebeg", nincs látható téglalap-keret.
+     A két szélső stop a krém/lap szekciókba olvad (a flakontól távol). */
   background:
-    linear-gradient(180deg, var(--cream) 0%, rgba(250,245,236,0) 14%, rgba(248,250,252,0) 86%, var(--bg) 100%),
-    radial-gradient(80% 60% at 50% 52%, #DEDFD8 0%, #CFD0C9 58%, #C6C7C1 100%); }
+    linear-gradient(180deg, var(--cream) 0%, #CFCFC9 9%, #CFCFC9 91%, var(--bg) 100%); }
 .scrub__head{ text-align:center; max-width:34ch; }
 .scrub__head h2{ font-size:clamp(1.4rem,1.05rem+1.4vw,2rem); margin-top:6px; }
 .scrub__sub{ margin-top:8px; color:var(--ink-soft); font-size:clamp(1rem,.95rem+.3vw,1.15rem); }
 .scrub__stage{ position:relative; display:flex; }
-.scrub__canvas{ height:min(64vh,640px); width:auto; aspect-ratio:300/720; display:block; background:transparent;
-  -webkit-mask-image: radial-gradient(130% 104% at 50% 50%, #000 70%, transparent 100%);
-          mask-image: radial-gradient(130% 104% at 50% 50%, #000 70%, transparent 100%); }
+.scrub__canvas{ height:min(64vh,640px); width:auto; aspect-ratio:300/720; display:block; background:#CFCFC9; }
 .scrub__loader{ position:absolute; inset:0; display:flex; align-items:center; justify-content:center; background:transparent; color:var(--ink-soft); font:14px/1.4 var(--font); letter-spacing:.02em; }
 .scrub__cap{ position:relative; width:100%; max-width:36ch; height:3.2em; text-align:center; }
 .scrub__cap > div{ position:absolute; inset:0; display:flex; align-items:center; justify-content:center; color:var(--ink-soft); font-size:1.05rem; transition:opacity .18s linear; padding:0 8px; }
